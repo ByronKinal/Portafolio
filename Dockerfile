@@ -1,5 +1,5 @@
 # Stage 1: Build stage
-FROM node:18-alpine AS build
+FROM node:22-alpine AS build
 WORKDIR /app
 
 # Install pnpm since pnpm-lock.yaml is present in the project
