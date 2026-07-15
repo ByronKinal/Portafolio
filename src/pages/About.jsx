@@ -1,4 +1,18 @@
-import { FiCheckCircle as CheckCircle2, FiMail, FiPhone, FiCalendar, FiBookOpen, FiUser, FiBriefcase } from 'react-icons/fi';
+import { 
+  FiCheckCircle as CheckCircle2, 
+  FiMail, 
+  FiPhone, 
+  FiCalendar, 
+  FiBookOpen, 
+  FiUser, 
+  FiBriefcase,
+  FiShield,
+  FiClock,
+  FiUsers,
+  FiCpu,
+  FiZap,
+  FiHeart
+} from 'react-icons/fi';
 
 const About = () => {
   const lenguajes = [
@@ -11,20 +25,50 @@ const About = () => {
   const toolCategories = [
     {
       title: "Frontend & Móvil",
-      items: ["React", "React Native", "JavaFX", "TailwindCSS", "Vite", "WebXR & Three.js"]
+      items: [
+        { name: "React", percentage: 85 },
+        { name: "React Native", percentage: 70 },
+        { name: "JavaFX", percentage: 75 },
+        { name: "TailwindCSS", percentage: 90 },
+        { name: "Vite", percentage: 85 },
+        { name: "WebXR & Three.js", percentage: 60 }
+      ]
     },
     {
       title: "Backend & Arquitectura",
-      items: ["Node.js & Express", "Java EE", "JWT & Auth", "Microservicios"]
+      items: [
+        { name: "Node.js & Express", percentage: 80 },
+        { name: "Java EE", percentage: 70 },
+        { name: "JWT & Auth", percentage: 80 },
+        { name: "Microservicios", percentage: 65 }
+      ]
     },
     {
       title: "Bases de Datos",
-      items: ["MongoDB", "PostgreSQL"]
+      items: [
+        { name: "MongoDB", percentage: 80 },
+        { name: "PostgreSQL", percentage: 75 }
+      ]
     },
     {
       title: "Herramientas & Redes",
-      items: ["Docker", "Git & GitHub", "Postman", "Trello", "CCNA (Redes)"]
+      items: [
+        { name: "Docker", percentage: 65 },
+        { name: "Git & GitHub", percentage: 85 },
+        { name: "Postman", percentage: 80 },
+        { name: "Trello", percentage: 90 },
+        { name: "CCNA (Redes)", percentage: 75 }
+      ]
     }
+  ];
+
+  const softSkills = [
+    { name: "Responsabilidad", description: "Comprometido con entregar resultados de alta calidad y cumplir los plazos acordados.", icon: FiShield, color: "text-blue-500 bg-blue-500/10" },
+    { name: "Puntualidad", description: "Respeto riguroso del tiempo en entregas, reuniones y compromisos establecidos.", icon: FiClock, color: "text-amber-500 bg-amber-500/10" },
+    { name: "Trabajo en Equipo", description: "Comunicación fluida y colaboración activa para alcanzar metas grupales.", icon: FiUsers, color: "text-emerald-500 bg-emerald-500/10" },
+    { name: "Resolución de Problemas", description: "Pensamiento analítico y capacidad para encontrar soluciones lógicas y eficientes.", icon: FiCpu, color: "text-purple-500 bg-purple-500/10" },
+    { name: "Aprendizaje Rápido", description: "Facilidad y entusiasmo para dominar nuevas tecnologías y metodologías con agilidad.", icon: FiZap, color: "text-pink-500 bg-pink-500/10" },
+    { name: "Proactividad", description: "Iniciativa constante para proponer mejoras en el código y optimizar flujos de trabajo.", icon: FiHeart, color: "text-rose-500 bg-rose-500/10" },
   ];
 
   return (
@@ -112,6 +156,27 @@ const About = () => {
                 </div>
               </div>
             </div>
+
+            {/* Habilidades Personales Card */}
+            <div className="bg-white/70 dark:bg-portfolio-surface/60 backdrop-blur-md border border-slate-200/50 dark:border-portfolio-surface/50 rounded-2xl p-8 shadow-xl dark:shadow-slate-950/20">
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Habilidades & Cualidades</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {softSkills.map((skill, index) => {
+                  const Icon = skill.icon;
+                  return (
+                    <div key={index} className="flex gap-4 p-4 rounded-xl bg-slate-50/50 dark:bg-portfolio-surface/20 border border-slate-100 dark:border-portfolio-surface/10 hover:border-primary/20 dark:hover:border-accent/20 transition-all duration-300">
+                      <div className={`p-3 rounded-lg h-fit ${skill.color}`}>
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-slate-800 dark:text-slate-200 text-sm mb-1">{skill.name}</h4>
+                        <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{skill.description}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
 
           {/* Right Column: Skills */}
@@ -144,15 +209,23 @@ const About = () => {
                 {toolCategories.map((category, catIndex) => (
                   <div key={catIndex} className="border-b border-slate-100 dark:border-portfolio-surface/80 last:border-0 last:pb-0 pb-4">
                     <h4 className="text-sm font-bold text-primary dark:text-accent mb-3 uppercase tracking-wider">{category.title}</h4>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {category.items.map((tech, index) => (
-                        <span 
+                        <div 
                           key={index} 
-                          className="flex items-center gap-1 px-3 py-1 rounded-lg text-xs font-medium bg-slate-100/80 dark:bg-portfolio-surface/40 text-slate-700 dark:text-slate-300 border border-slate-200/30 dark:border-portfolio-surface/30 hover:border-primary/30 dark:hover:border-accent/30 transition-all duration-300"
+                          className="flex flex-col p-2.5 bg-slate-50/50 dark:bg-portfolio-surface/30 rounded-xl border border-slate-200/30 dark:border-portfolio-surface/30 hover:border-primary/30 dark:hover:border-accent/30 transition-all duration-300"
                         >
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
-                          {tech}
-                        </span>
+                          <div className="flex justify-between items-center mb-1">
+                            <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">{tech.name}</span>
+                            <span className="text-[10px] font-bold text-primary dark:text-accent bg-indigo-500/10 px-1.5 py-0.5 rounded-full">{tech.percentage}%</span>
+                          </div>
+                          <div className="w-full bg-slate-200 dark:bg-portfolio-surface rounded-full h-1 overflow-hidden">
+                            <div 
+                              className="bg-gradient-to-r from-primary to-accent h-full rounded-full" 
+                              style={{ width: `${tech.percentage}%` }}
+                            ></div>
+                          </div>
+                        </div>
                       ))}
                     </div>
                   </div>
