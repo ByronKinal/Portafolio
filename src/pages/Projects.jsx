@@ -46,7 +46,8 @@ const Projects = () => {
       githubLink: [
         { label: 'Frontend', url: 'https://github.com/KinalVR-Expo2026/KinalVR-Client' },
         { label: 'Backend', url: 'https://github.com/KinalVR-Expo2026/KinalVR-Server' }
-      ]
+      ],
+      liveLink: 'https://kinalvr-client.onrender.com'
     },
     {
       title: 'GastroFlow',
