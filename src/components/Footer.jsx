@@ -4,8 +4,8 @@ const Footer = () => {
   return (
     <footer className="bg-white/80 dark:bg-portfolio-bg/80 backdrop-blur-md border-t border-slate-200/50 dark:border-portfolio-surface/50 transition-colors duration-300">
       <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-        <div className="md:flex md:items-center md:justify-between">
-          <div className="flex justify-center md:order-2 space-x-6">
+        <div className="flex justify-center">
+          <div className="flex space-x-6">
             <a 
               href="https://github.com/ByronKinal" 
               target="_blank" 
@@ -41,11 +41,6 @@ const Footer = () => {
               <span className="sr-only">Correo</span>
               <Mail className="h-5 w-5" aria-hidden="true" />
             </a>
-          </div>
-          <div className="mt-8 md:mt-0 md:order-1">
-            <p className="text-center text-sm font-semibold text-slate-500 dark:text-slate-400">
-              &copy; {new Date().getFullYear()} Byron Pineda. Diseñado con pasión.
-            </p>
           </div>
         </div>
       </div>
