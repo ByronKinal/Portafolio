@@ -4,7 +4,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  font-family: 'Outfit', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -78,8 +78,21 @@ html.dark ::-webkit-scrollbar-thumb:hover {
   }
 }
 
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
 .animate-blob {
   animation: blob-float 10s infinite alternate ease-in-out;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s infinite ease-in-out;
 }
 
 .animation-delay-2000 {

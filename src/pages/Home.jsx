@@ -1,4 +1,4 @@
-import { FiArrowRight as ArrowRight, FiCode as Code, FiDatabase as Database, FiLayout as Layout } from 'react-icons/fi';
+import { FiArrowRight as ArrowRight, FiCode as Code, FiDatabase as Database, FiLayout as Layout, FiChevronDown } from 'react-icons/fi';
 import profilePic from '../assets/Perfil.jpeg';
 
 const Home = () => {
@@ -104,6 +104,12 @@ const Home = () => {
           </div>
           
         </div>
+      </div>
+
+      {/* Scroll Down Indicator */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 animate-bounce-slow pointer-events-none hidden lg:flex">
+        <span className="text-[10px] font-bold tracking-widest uppercase">Deslizar</span>
+        <FiChevronDown className="w-5 h-5 text-primary" />
       </div>
     </section>
   );

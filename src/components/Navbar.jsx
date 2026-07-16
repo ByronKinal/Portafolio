@@ -3,25 +3,34 @@ import { useState, useEffect } from 'react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('theme');
+      if (saved) return saved === 'dark';
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    return false;
+  });
   const [activeSection, setActiveSection] = useState('inicio');
 
   useEffect(() => {
-    // Check initial system/saved preference
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setIsDark(true);
+    if (isDark) {
       document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
     }
-  }, []);
+  }, [isDark]);
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['inicio', 'sobre-mi', 'trayectoria', 'proyectos'];
+      const sections = ['inicio', 'sobre-mi', 'trayectoria', 'proyectos', 'contacto'];
       const scrollPosition = window.scrollY + 120; // threshold offset
 
-      // Special case: if scrolled near the bottom, set active to the last section (proyectos)
+      // Special case: if scrolled near the bottom, set active to the last section (contacto)
       if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50) {
-        setActiveSection('proyectos');
+        setActiveSection('contacto');
         return;
       }
 
@@ -45,8 +54,7 @@ const Navbar = () => {
   }, []);
 
   const toggleTheme = () => {
-    setIsDark(!isDark);
-    document.documentElement.classList.toggle('dark');
+    setIsDark(prev => !prev);
   };
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -56,6 +64,7 @@ const Navbar = () => {
     { name: 'Sobre Mí', href: '#sobre-mi', sectionId: 'sobre-mi' },
     { name: 'Trayectoria', href: '#trayectoria', sectionId: 'trayectoria' },
     { name: 'Proyectos', href: '#proyectos', sectionId: 'proyectos' },
+    { name: 'Contacto', href: '#contacto', sectionId: 'contacto' },
   ];
 
   return (
