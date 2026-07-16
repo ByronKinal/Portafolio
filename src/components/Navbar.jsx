@@ -25,12 +25,12 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['inicio', 'sobre-mi', 'trayectoria', 'proyectos', 'contacto'];
+      const sections = ['inicio', 'sobre-mi', 'trayectoria', 'proyectos'];
       const scrollPosition = window.scrollY + 120; // threshold offset
 
-      // Special case: if scrolled near the bottom, set active to the last section (contacto)
+      // Special case: if scrolled near the bottom, set active to the last section (proyectos)
       if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50) {
-        setActiveSection('contacto');
+        setActiveSection('proyectos');
         return;
       }
 
@@ -64,7 +64,6 @@ const Navbar = () => {
     { name: 'Sobre Mí', href: '#sobre-mi', sectionId: 'sobre-mi' },
     { name: 'Trayectoria', href: '#trayectoria', sectionId: 'trayectoria' },
     { name: 'Proyectos', href: '#proyectos', sectionId: 'proyectos' },
-    { name: 'Contacto', href: '#contacto', sectionId: 'contacto' },
   ];
 
   return (
