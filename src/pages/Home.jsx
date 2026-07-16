@@ -1,5 +1,6 @@
 import { FiArrowRight as ArrowRight, FiCode as Code, FiDatabase as Database, FiLayout as Layout, FiChevronDown } from 'react-icons/fi';
 import profilePic from '../assets/Perfil.jpeg';
+import cvFile from '../assets/Curriculum/CURRÍCULUM VITAE STEVE OCTUBRE 2025.pdf';
 
 const Home = () => {
   return (
@@ -53,7 +54,7 @@ const Home = () => {
         {/* Call to Actions */}
         <div className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
           <a
-            href="/cv.pdf"
+            href={cvFile}
             download="ByronPineda_CV.pdf"
             className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 border border-transparent text-base font-bold rounded-2xl text-white bg-gradient-to-r from-portfolio-muted to-portfolio-accent hover:from-portfolio-accent hover:to-portfolio-muted shadow-lg shadow-portfolio-muted/20 dark:shadow-portfolio-muted/10 hover:scale-105 active:scale-95 transition-all"
           >
