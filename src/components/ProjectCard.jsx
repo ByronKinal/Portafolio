@@ -1,5 +1,28 @@
 import { useState } from 'react';
 import { FiExternalLink as ExternalLink, FiGithub as Github, FiBookOpen as BookOpen, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { 
+  SiJavascript, SiReact, SiNodedotjs, SiVite, SiMongodb, SiPostgresql, 
+  SiDocker, SiHtml5, SiTailwindcss
+} from 'react-icons/si';
+import { FaJava, FaCss3Alt } from 'react-icons/fa';
+import { TbSql } from 'react-icons/tb';
+
+const getTechIcon = (tech) => {
+  const t = tech.toLowerCase().trim();
+  if (t === 'javascript') return { icon: SiJavascript, color: 'text-[#F7DF1E]' };
+  if (t === 'react' || t === 'react native') return { icon: SiReact, color: 'text-[#61DAFB]' };
+  if (t === 'node.js') return { icon: SiNodedotjs, color: 'text-[#339933]' };
+  if (t === 'vite') return { icon: SiVite, color: 'text-[#646CFF]' };
+  if (t === 'mongodb') return { icon: SiMongodb, color: 'text-[#47A248]' };
+  if (t === 'postgresql') return { icon: SiPostgresql, color: 'text-[#4169E1]' };
+  if (t === 'docker') return { icon: SiDocker, color: 'text-[#2496ED]' };
+  if (t === 'java' || t === 'javafx') return { icon: FaJava, color: 'text-[#E76F00]' };
+  if (t === 'sql') return { icon: TbSql, color: 'text-[#00758F]' };
+  if (t === 'html5' || t === 'html') return { icon: SiHtml5, color: 'text-[#E34F26]' };
+  if (t === 'css3' || t === 'css') return { icon: FaCss3Alt, color: 'text-[#1572B6]' };
+  if (t === 'tailwindcss') return { icon: SiTailwindcss, color: 'text-[#06B6D4]' };
+  return null;
+};
 
 const ProjectCard = ({ title, description, technologies, githubLink, liveLink, learnedSkills, image, images }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -107,14 +130,19 @@ const ProjectCard = ({ title, description, technologies, githubLink, liveLink, l
         <div>
           {/* Technologies badge container */}
           <div className="flex flex-wrap gap-1.5 mb-6">
-            {technologies.map((tech, index) => (
-              <span
-                key={index}
-                className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 dark:bg-portfolio-surface dark:text-slate-300 border border-slate-200/20 dark:border-portfolio-surface/20"
-              >
-                {tech}
-              </span>
-            ))}
+            {technologies.map((tech, index) => {
+              const techInfo = getTechIcon(tech);
+              const Icon = techInfo?.icon;
+              return (
+                <span
+                  key={index}
+                  className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 dark:bg-portfolio-surface dark:text-slate-300 border border-slate-200/20 dark:border-portfolio-surface/20 hover:scale-105 transition-transform duration-200"
+                >
+                  {Icon && <Icon className={`w-3.5 h-3.5 ${techInfo.color}`} />}
+                  {tech}
+                </span>
+              );
+            })}
           </div>
 
           {/* Links Footer */}

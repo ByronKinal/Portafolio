@@ -13,51 +13,70 @@ import {
   FiZap,
   FiHeart
 } from 'react-icons/fi';
+import { 
+  SiJavascript, 
+  SiHtml5, 
+  SiReact, 
+  SiTailwindcss, 
+  SiVite, 
+  SiThreedotjs, 
+  SiNodedotjs, 
+  SiJsonwebtokens, 
+  SiMongodb, 
+  SiPostgresql, 
+  SiDocker, 
+  SiGit, 
+  SiPostman, 
+  SiTrello, 
+  SiCisco 
+} from 'react-icons/si';
+import { FaJava } from 'react-icons/fa';
+import { TbSql } from 'react-icons/tb';
 
 const About = () => {
   const lenguajes = [
-    { name: "Java", percentage: 100, color: "from-blue-500 to-indigo-600" },
-    { name: "SQL", percentage: 95, color: "from-purple-500 to-pink-600" },
-    { name: "JavaScript", percentage: 80, color: "from-amber-400 to-orange-500" },
-    { name: "HTML5 & CSS3", percentage: 50, color: "from-emerald-400 to-teal-500" },
+    { name: "Java", percentage: 100, color: "from-blue-500 to-indigo-600", icon: FaJava, iconColor: "text-[#E76F00]" },
+    { name: "SQL", percentage: 95, color: "from-purple-500 to-pink-600", icon: TbSql, iconColor: "text-[#00758F]" },
+    { name: "JavaScript", percentage: 80, color: "from-amber-400 to-orange-500", icon: SiJavascript, iconColor: "text-[#F7DF1E]" },
+    { name: "HTML5 & CSS3", percentage: 50, color: "from-emerald-400 to-teal-500", icon: SiHtml5, iconColor: "text-[#E34F26]" },
   ];
 
   const toolCategories = [
     {
       title: "Frontend & Móvil",
       items: [
-        { name: "React", percentage: 85 },
-        { name: "React Native", percentage: 70 },
-        { name: "JavaFX", percentage: 75 },
-        { name: "TailwindCSS", percentage: 90 },
-        { name: "Vite", percentage: 85 },
-        { name: "WebXR & Three.js", percentage: 60 }
+        { name: "React", percentage: 85, icon: SiReact, iconColor: "text-[#61DAFB]" },
+        { name: "React Native", percentage: 70, icon: SiReact, iconColor: "text-[#61DAFB]" },
+        { name: "JavaFX", percentage: 75, icon: FaJava, iconColor: "text-[#E76F00]" },
+        { name: "TailwindCSS", percentage: 90, icon: SiTailwindcss, iconColor: "text-[#06B6D4]" },
+        { name: "Vite", percentage: 85, icon: SiVite, iconColor: "text-[#646CFF]" },
+        { name: "WebXR & Three.js", percentage: 60, icon: SiThreedotjs, iconColor: "text-slate-800 dark:text-slate-200" }
       ]
     },
     {
       title: "Backend & Arquitectura",
       items: [
-        { name: "Node.js & Express", percentage: 80 },
-        { name: "Java EE", percentage: 70 },
-        { name: "JWT & Auth", percentage: 80 },
-        { name: "Microservicios", percentage: 65 }
+        { name: "Node.js & Express", percentage: 80, icon: SiNodedotjs, iconColor: "text-[#339933]" },
+        { name: "Java EE", percentage: 70, icon: FaJava, iconColor: "text-[#E76F00]" },
+        { name: "JWT & Auth", percentage: 80, icon: SiJsonwebtokens, iconColor: "text-[#D63AFF]" },
+        { name: "Microservicios", percentage: 65, icon: FiCpu, iconColor: "text-indigo-500" }
       ]
     },
     {
       title: "Bases de Datos",
       items: [
-        { name: "MongoDB", percentage: 80 },
-        { name: "PostgreSQL", percentage: 75 }
+        { name: "MongoDB", percentage: 80, icon: SiMongodb, iconColor: "text-[#47A248]" },
+        { name: "PostgreSQL", percentage: 75, icon: SiPostgresql, iconColor: "text-[#4169E1]" }
       ]
     },
     {
       title: "Herramientas & Redes",
       items: [
-        { name: "Docker", percentage: 65 },
-        { name: "Git & GitHub", percentage: 85 },
-        { name: "Postman", percentage: 80 },
-        { name: "Trello", percentage: 90 },
-        { name: "CCNA (Redes)", percentage: 75 }
+        { name: "Docker", percentage: 65, icon: SiDocker, iconColor: "text-[#2496ED]" },
+        { name: "Git & GitHub", percentage: 85, icon: SiGit, iconColor: "text-[#F05032]" },
+        { name: "Postman", percentage: 80, icon: SiPostman, iconColor: "text-[#FF6C37]" },
+        { name: "Trello", percentage: 90, icon: SiTrello, iconColor: "text-[#0079BF]" },
+        { name: "CCNA (Redes)", percentage: 75, icon: SiCisco, iconColor: "text-[#1BA0D7]" }
       ]
     }
   ];
@@ -188,7 +207,10 @@ const About = () => {
                 {lenguajes.map((skill, index) => (
                   <div key={index} className="flex flex-col">
                     <div className="flex justify-between items-center mb-2">
-                      <span className="font-semibold text-slate-800 dark:text-slate-200 text-sm md:text-base">{skill.name}</span>
+                      <div className="flex items-center gap-2">
+                        {skill.icon && <skill.icon className={`w-5 h-5 ${skill.iconColor}`} />}
+                        <span className="font-semibold text-slate-800 dark:text-slate-200 text-sm md:text-base">{skill.name}</span>
+                      </div>
                       <span className="text-xs font-bold px-2 py-0.5 bg-indigo-500/10 text-primary dark:text-accent rounded-full">{skill.percentage}%</span>
                     </div>
                     <div className="w-full bg-slate-200 dark:bg-portfolio-surface rounded-full h-2 overflow-hidden">
@@ -215,8 +237,11 @@ const About = () => {
                           key={index} 
                           className="flex flex-col p-2.5 bg-slate-50/50 dark:bg-portfolio-surface/30 rounded-xl border border-slate-200/30 dark:border-portfolio-surface/30 hover:border-primary/30 dark:hover:border-accent/30 transition-all duration-300"
                         >
-                          <div className="flex justify-between items-center mb-1">
-                            <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">{tech.name}</span>
+                          <div className="flex justify-between items-center mb-1.5">
+                            <div className="flex items-center gap-2">
+                              {tech.icon && <tech.icon className={`w-4 h-4 ${tech.iconColor}`} />}
+                              <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">{tech.name}</span>
+                            </div>
                             <span className="text-[10px] font-bold text-primary dark:text-accent bg-indigo-500/10 px-1.5 py-0.5 rounded-full">{tech.percentage}%</span>
                           </div>
                           <div className="w-full bg-slate-200 dark:bg-portfolio-surface rounded-full h-1 overflow-hidden">
